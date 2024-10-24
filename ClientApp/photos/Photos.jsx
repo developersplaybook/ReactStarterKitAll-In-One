@@ -86,7 +86,7 @@ const Photos = () => {
   const propsAnimate = {
     startStyle: { opacity: 0 },
     endStyle: { opacity: 1 },
-    durationSeconds: 1,
+    duration: 1000,
   };
 
   const rows = [];
@@ -116,7 +116,7 @@ const Photos = () => {
           )}
         </div>
         <PhotoFrame>
-          <Animate delaySeconds={index / 24} play {...propsAnimate}>
+          <Animate delay={index / 24} play {...propsAnimate}>
             <Link to={`/photodetails/${photo.photoID}`}>
               <img src={imageUrl(photo)} alt="" style={{ border: '4px solid white' }} />
             </Link>
