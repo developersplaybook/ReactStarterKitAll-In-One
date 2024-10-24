@@ -28,7 +28,7 @@ const Home = () => {
 
   }, [isClient]);
 
-  const props = {
+  const animationProps = {
     startStyle: { opacity: 0 },
     endStyle: { opacity: 1 }
   };
@@ -55,7 +55,7 @@ const Home = () => {
     </div>);
 
   const animatedImage = isClient ? (
-    <Animate play={play} duration={3} {...props}>
+    <Animate play={play} duration={3} {...animationProps}>
       <AnimateKeyframes
         play={play}
         iterationCount={10}
@@ -68,7 +68,7 @@ const Home = () => {
         <AnimateKeyframes
           play={play}
           iterationCount="1"
-          direction="alternate"
+          direction="normal"
           duration={2}
           keyframes={[
             'transform: scaleX(0.05) scaleY(0.05)',
@@ -138,7 +138,7 @@ const Home = () => {
                   </div>
                 </div>
                 <div id="divContact" style={{ minHeight: '90px' }}>
-                  <Animate play={play} duration={3} {...props} delay={1}>
+                  <Animate play={play} duration={3} {...animationProps} delay={1}>
                     <h4>Contact information</h4>
                     <p>
                       &nbsp;&nbsp;<span className="glyphicon glyphicon-phone-alt" style={{ color: "gray" }} />&nbsp;010-123 456
@@ -156,7 +156,7 @@ const Home = () => {
                       </div>
                       <div className="panel-body panel-height_small">
                         <div id="divWeather" style={{ verticalAlign: "textTop" }}>
-                          <Animate play={play} duration={3} delay={2.1} {...props}>
+                          <Animate play={play} duration={3} delay={2.1} {...animationProps}>
                             <a className="weatherwidget-io"
                               href="https://forecast7.com/en/40d71n74d01/new-york/"
                               data-label_1="NEW YORK"
