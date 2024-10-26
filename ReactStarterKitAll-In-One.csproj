@@ -60,6 +60,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Include="ReactStarterKitAll-In-One.sln" />
 	  <None Include="wwwroot\DragAndDrop.css" />
 	  <None Include="wwwroot\favicon.ico" />
 	</ItemGroup>
