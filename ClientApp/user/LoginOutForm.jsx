@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
 import FormInput from '../common/FormInput';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
@@ -11,6 +12,7 @@ const LoginOutForm = () => {
   const [password, setPassword] = useState('');
   const [captionText, setCaptionText] = useState('Log in');
   const { loading, setLoading } = useLoading();
+  const history = useHistory();
 
   const handleClose = () => {
     setShowModal(false);
@@ -35,7 +37,7 @@ const LoginOutForm = () => {
       } else {
         const response = await checkPasswordAsync(password);
         if (response === 'PasswordOk') {
-          window.history.back();
+          history.push('/albums');
         } else {
           // Handle case where response is not a token
           console.error('Login failed or invalid response');
@@ -43,54 +45,55 @@ const LoginOutForm = () => {
         }
       }
     } catch (error) {
-        console.error("Error:", error);
-        setCaptionText('Wrong password, try again...')
+      console.error("Error:", error);
+      setCaptionText('Wrong password, try again...')
     } finally {
-        setLoading(false);
-  }
-};
+      setLoading(false);
+    }
+  };
+
 
   return (
-    <Modal.Dialog
+    <Modal
       size="sm"
       show={showModal}
       onHide={handleClose}
       aria-labelledby="example-modal-sizes-title-sm"
-      centered
+      animation={false}
     >
-      <Modal.Header>
-        <Modal.Title>
-          {!isAuthorized ? (
-            <FormInput
-              text={password}
-              type="password"
-              placeholder="Password"
-              preText={captionText}
-              onTextChanged={handlePasswordChanged}
-              onEnter={handleLogInOut}
+        <Modal.Header>
+          <Modal.Title>
+            {!isAuthorized ? (
+              <FormInput
+                text={password}
+                type="password"
+                placeholder="Password"
+                preText={captionText}
+                onTextChanged={handlePasswordChanged}
+                onEnter={handleLogInOut}
+              />
+            ) : (
+              <strong>Log out</strong>
+            )}
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Button variant="secondary" onClick={handleClose}>
+            Cancel
+          </Button>
+          <Button variant="primary" onClick={handleLogInOut}>
+            {isAuthorized ? 'Log out' : 'Log in'}
+          </Button>
+          <Button style={{ border: 'none', background: 'none', color: 'black' }}>
+            <FontAwesomeIcon
+              icon={faSpinner}
+              size="2x"
+              spin
+              style={{ opacity: loading ? '1' : '0' }}
             />
-          ) : (
-            <strong>Log out</strong>
-          )}
-        </Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <Button variant="secondary" onClick={handleClose}>
-          Cancel
-        </Button>
-        <Button variant="primary" onClick={handleLogInOut}>
-          {isAuthorized ? 'Log out' : 'Log in'}
-        </Button>
-        <Button style={{ border: 'none', background: 'none', color: 'black' }}>
-          <FontAwesomeIcon
-            icon={faSpinner}
-            size="2x"
-            spin
-            style={{ opacity: loading ? '1' : '0' }}
-          />
-        </Button>
-      </Modal.Body>
-    </Modal.Dialog>
+          </Button>
+        </Modal.Body>
+    </Modal>
   );
 };
 
