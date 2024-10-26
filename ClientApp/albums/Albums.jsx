@@ -1,5 +1,5 @@
 ﻿import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Row, Col } from 'react-bootstrap';
 import AlbumFrame from './AlbumFrame';
 import * as apiClient from "../helpers/ApiHelpers";
@@ -9,14 +9,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Albums = () => {
   const [albums, setAlbums] = useState([]);
-  const history = useHistory();
+  const navigate = useNavigate();
   const { isAuthorized, token } = useSessionUser();
   const { loading, setLoading } = useLoading();
   const [errorStates, setErrorStates] = useState({}); // Object to manage error state for each album
 
   useEffect(() => {
-    history.push('/albums');
-  }, []);
+    navigate('/albums');
+  }, [navigate]);
 
   useEffect(() => {
     getAlbumsWithPhotoCount('api/albums');

@@ -1,6 +1,6 @@
 ﻿import React, { useState, useEffect } from 'react';
 import { Row, Col } from 'react-bootstrap';
-import { Link, useHistory, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import PhotoFrame from '../photos/PhotoFrame';
 import * as apiClient from "../helpers/ApiHelpers";
 
@@ -9,7 +9,7 @@ const PhotoDetails = () => {
   const [photos, setPhotos] = useState([]);
   const [photoId, setPhotoId] = useState(Number(photoIdParam));
   const [albumCaption, setAlbumCaption] = useState('');
-  const history = useHistory();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchPhotos = async (id) => {
@@ -44,7 +44,7 @@ const PhotoDetails = () => {
 
   const setPhotoDetailsRoute = (e, photoId) => {
     e.preventDefault();
-    history.push(`/photodetails/${photoId}`);
+    navigate(`/photodetails/${photoId}`);
   };
 
   const getPhotoNumber = (pid) => {

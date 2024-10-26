@@ -5,7 +5,7 @@ import hamburger from "./../wwwroot/images/Hamburger.png";
 import ReactSvgIcon from "./common/ReactSvgIcon";
 
 
-const Frame = ({children }) => {
+const Frame = ({ children }) => {
   const [dayNumber] = useState(new Date().getDay() % 12);
 
   const getCss = (spriteType, dayNumber) => `transparent url('/images/Bootstrap${spriteType}Composed.jpg') 0 ${-81 * dayNumber}px`;
@@ -76,10 +76,10 @@ const Frame = ({children }) => {
           <div className="collapse navbar-collapse navbar-nav-container">
             <ul className="navbar-nav navbar-nav-main spriteTabs">
               <li ref={menuRefs.homeLi} className="nav-item">
-                <NavLink to="/" exact className="nav-link no-underline" onClick={closeSidebar}>Home<span /></NavLink>
+                <NavLink to="/" className="nav-link no-underline" onClick={closeSidebar}>Home<span /></NavLink>
               </li>
               <li ref={menuRefs.albumsLi} className="nav-item">
-                <NavLink to="/albums" exact className="nav-link no-underline" onClick={closeSidebar}>Album<span /></NavLink>
+                <NavLink to="/albums" className="nav-link no-underline" onClick={closeSidebar}>Album<span /></NavLink>
               </li>
             </ul>
             <ul className="navbar-nav navbar-nav-right spriteTabs">
@@ -87,7 +87,7 @@ const Frame = ({children }) => {
                 <a href="https://www.google.com/maps/place/Statue+of+Liberty/@40.688969,-113.0657959,4z/data=!4m10!1m2!2m1!1sstaue+of+liberty!3m6!1s0x89c25090129c363d:0x40c6a5770d25022b!8m2!3d40.6892494!4d-74.0445004!15sChFzdGF0dWUgb2YgbGliZXJ0eVoTIhFzdGF0dWUgb2YgbGliZXJ0eZIBE2hpc3RvcmljYWxfbGFuZG1hcmvgAQA!16zL20vMDcycDg?entry=ttu" target="_blank" rel="noopener noreferrer" className="nav-link no-underline"><span></span>&nbsp;&nbsp;<i className="fas fa-map-marker-alt"></i><span></span></a>
               </li>
               <li className="nav-item">
-                <NavLink to="/user" exact className="nav-link no-underline"><span></span>&nbsp;<i className="fas fa-user"></i><span></span></NavLink>
+                <NavLink to="/user" className="nav-link no-underline"><span></span>&nbsp;<i className="fas fa-user"></i><span></span></NavLink>
               </li>
             </ul>
           </div>
@@ -102,10 +102,10 @@ const Frame = ({children }) => {
         <div className="nav-list">
           <ul className="navbar-nav">
             <li ref={menuRefs.homeLi} className="nav-item">
-              <NavLink to="/" exact className="nav-link" onClick={closeSidebar}>Home</NavLink>
+              <NavLink to="/" className="nav-link" onClick={closeSidebar}>Home</NavLink>
             </li>
             <li ref={menuRefs.albumsLi} className="nav-item">
-              <NavLink to="/albums" exact className="nav-link" onClick={closeSidebar}>Album</NavLink>
+              <NavLink to="/albums" className="nav-link" onClick={closeSidebar}>Album</NavLink>
             </li>
           </ul>
         </div>

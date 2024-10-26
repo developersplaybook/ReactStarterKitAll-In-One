@@ -1,5 +1,6 @@
 ﻿import React, { useState, useEffect } from 'react';
-import { Switch, Route, BrowserRouter, StaticRouter } from 'react-router-dom';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import { StaticRouter } from 'react-router-dom/server';
 import Frame from './Frame';
 import Home from './home/Home';
 import Albums from './albums/Albums';
@@ -22,18 +23,23 @@ const App = (props) => {
 
   return (
     <GlobalStateProvider>
-        <Router {...routerProps}>
-          <Frame>
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route path="/albums" component={!isClient ? NotFound : Albums} />
-              <Route path="/photos/:albumId" render={!isClient ? NotFound : (props) => <Photos {...props} />} />
-              <Route path="/photodetails/:photoId" component={!isClient ? NotFound : PhotoDetails} />
-              <Route path="/user" component={!isClient ? NotFound : LoginOutForm} />
-              <Route path="*" component={NotFound} />
-            </Switch>
-          </Frame>
-        </Router>
+      <Router {...routerProps}>
+        <Frame>
+          <Routes>
+            {/* Exact path for Home */}
+            <Route path="/" element={<Home />} />
+
+            {/* Non-exact paths */}
+            <Route path="/albums" element={<Albums />} />
+            <Route path="/photos/:albumId" element={<Photos />} />
+            <Route path="/photodetails/:photoId" element={<PhotoDetails />} />
+            <Route path="/user" element={<LoginOutForm />} />
+
+            {/* Catch-all route */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Frame>
+      </Router>
     </GlobalStateProvider>
   );
 };

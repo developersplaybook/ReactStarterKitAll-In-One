@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import FormInput from '../common/FormInput';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
@@ -12,7 +12,7 @@ const LoginOutForm = () => {
   const [password, setPassword] = useState('');
   const [captionText, setCaptionText] = useState('Log in');
   const { loading, setLoading } = useLoading();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleClose = () => {
     setShowModal(false);
@@ -37,7 +37,7 @@ const LoginOutForm = () => {
       } else {
         const response = await checkPasswordAsync(password);
         if (response === 'PasswordOk') {
-          history.push('/albums');
+          navigate('/albums');
         } else {
           // Handle case where response is not a token
           console.error('Login failed or invalid response');
