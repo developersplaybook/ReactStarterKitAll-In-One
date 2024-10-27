@@ -5,7 +5,6 @@ import Frame from './Frame';
 import Home from './home/Home';
 import Albums from './albums/Albums';
 import Photos from './photos/Photos';
-import LoginOutForm from './user/LoginOutForm';
 import PhotoDetails from './photodetails/PhotoDetails';
 import NotFound from './NotFound';
 import { GlobalStateProvider } from './contexts/GlobalStateContext';
@@ -26,16 +25,10 @@ const App = (props) => {
       <Router {...routerProps}>
         <Frame>
           <Routes>
-            {/* Exact path for Home */}
             <Route path="/" element={<Home />} />
-
-            {/* Non-exact paths */}
             <Route path="/albums" element={<Albums />} />
             <Route path="/photos/:albumId" element={<Photos />} />
             <Route path="/photodetails/:photoId" element={<PhotoDetails />} />
-            <Route path="/user" element={<LoginOutForm />} />
-
-            {/* Catch-all route */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Frame>
