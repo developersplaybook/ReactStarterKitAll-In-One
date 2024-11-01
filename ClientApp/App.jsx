@@ -9,7 +9,7 @@ import PhotoDetails from './photodetails/PhotoDetails';
 import NotFound from './NotFound';
 import { GlobalStateProvider } from './contexts/GlobalStateContext';
 
-const App = (props) => {
+const App = ({ location }) => {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -18,7 +18,7 @@ const App = (props) => {
   }, []);
 
   const Router = !isClient ? StaticRouter : BrowserRouter;
-  const routerProps = !isClient ? { location: props.location, context: {} } : {};
+  const routerProps = !isClient ? { location: location, context: {} } : {};
 
   return (
     <GlobalStateProvider>
