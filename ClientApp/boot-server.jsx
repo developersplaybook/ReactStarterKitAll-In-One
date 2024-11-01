@@ -1,20 +1,17 @@
 import React from 'react';
-import ReactDOMServer from 'react-dom/server';
+import { renderToString } from 'react-dom/server';
 import App from './App';
 import { createServerRenderer } from 'aspnet-prerendering';
 
-export default createServerRenderer(async params => {
+export default createServerRenderer(params => {
+  return new Promise((resolve, reject) => {
+    const appHTML = renderToString(<App location={params.location.path} />);
 
-  const app = (
-      <App />
-  );
-
-  const html = ReactDOMServer.renderToString(app);
-
-  return {
-    html,
-    globals: {
-      __INITIAL_DATA__: params.data,
-    },
-  };
+    params.domainTasks.then(() => {
+      resolve({
+        html: appHTML,
+        globals: {} // Add any global variables if needed
+      });
+    }).catch(reject); // Propagate errors
+  });
 });
