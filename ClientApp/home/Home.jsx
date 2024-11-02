@@ -5,6 +5,7 @@ import epostJpg from '../../wwwroot/images/mail.png';
 import { Animate, AnimateKeyframes } from "react-simple-animate";
 import InfoMessage from './InfoMessage';
 import UpcomingFeatures from './UpcomingFeatures';
+import OtherApplications from './OtherApplications';
 
 const Home = () => {
   const [isClient, setIsClient] = useState(false);
@@ -199,6 +200,16 @@ const Home = () => {
                   </div>
                   <div className="panel-body">
                     <UpcomingFeatures />
+                  </div>
+                </div>
+              </div>
+              <div className="col-md-12">
+                <div className="panel panel-primary">
+                  <div className="panel-heading">
+                    <h3 className="panel-title">Don&apos;t forget to check the other applications</h3>
+                  </div>
+                  <div className="panel-body">
+                    <OtherApplications />
                   </div>
                 </div>
               </div>
