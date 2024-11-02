@@ -19,11 +19,13 @@ const InfoMessage = () => {
     <div style={styles}>
       <p>
         Thank you for purchasing <em>The Aspiring Full Stack Developer&apos;s Playbook: From AI to Microservices and Kubernetes</em>. I hope you find the book and the accompanying code both enjoyable and practically useful.
-        <p style={redStyles}>Don&apos;t forget to leave a review on Amazon!</p>
+      </p>
+      <p style={redStyles}>Don&apos;t forget to leave a review on Amazon!</p>
+      <p>
         If you have any questions or feedback, feel free to email me&mdash;my contact information is in the book.
       </p>
       <p>Please check:</p>
-      <ul>
+      <ul style={{ listStyleImage: 'none', listStyleType: 'disc', paddingLeft: '20px' }}>
         <li>Authorization with JSON WebToken</li>
         <li>File upload with drag & drop</li>
         <li>State Management with React Context API</li>
@@ -33,6 +35,7 @@ const InfoMessage = () => {
         <li>Server Side Rendering</li>
         <li>Webpack 5 for module bundling and minification</li>
       </ul>
+
     </div>
   );
 };

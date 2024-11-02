@@ -13,8 +13,8 @@ const UpcomingFeatures = () => {
       <p>
         Planned features:
       </p>
-      <ul>
-        <li>Typescript</li>
+      <ul style={{ listStyleImage: 'none', listStyleType: 'disc', paddingLeft: '20px' }}>
+        <li>React with Typescript</li>
         <li>Vite as alternative to react-scripts for building React applications</li>
       </ul>
     </div>
