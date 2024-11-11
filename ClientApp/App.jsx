@@ -7,6 +7,7 @@ import Albums from './albums/Albums';
 import Photos from './photos/Photos';
 import PhotoDetails from './photodetails/PhotoDetails';
 import NotFound from './NotFound';
+import ExternalRedirect from './ExternalRedirect';
 import { GlobalStateProvider } from './contexts/GlobalStateContext';
 
 const App = ({ location }) => {
@@ -29,6 +30,7 @@ const App = ({ location }) => {
             <Route path="/albums" element={<Albums />} />
             <Route path="/photos/:albumId" element={<Photos />} />
             <Route path="/photodetails/:photoId" element={<PhotoDetails />} />
+            <Route path="/external" element={<ExternalRedirect url="https://www.youtube.com/" />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Frame>

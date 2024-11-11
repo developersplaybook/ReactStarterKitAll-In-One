@@ -20,6 +20,7 @@ const Frame = ({ children }) => {
   const menuRefs = {
     homeLi: useRef(null),
     albumsLi: useRef(null),
+    externalLi: useRef(null),
     userLi: useRef(null),
   };
 
@@ -87,6 +88,9 @@ const Frame = ({ children }) => {
               <li ref={menuRefs.albumsLi} className="nav-item">
                 <NavLink to="/albums" className="nav-link no-underline" onClick={closeSidebar}>Album<span /></NavLink>
               </li>
+              <li ref={menuRefs.externalLi} className="nav-item">
+                <NavLink to="/external" className="nav-link no-underline" onClick={closeSidebar}>YouTube<span /></NavLink>
+              </li>
             </ul>
             <ul className="navbar-nav navbar-nav-right spriteTabs">
               <li className="nav-item">
@@ -112,6 +116,9 @@ const Frame = ({ children }) => {
             </li>
             <li ref={menuRefs.albumsLi} className="nav-item">
               <NavLink to="/albums" className="nav-link" onClick={closeSidebar}>Album</NavLink>
+            </li>
+            <li ref={menuRefs.externalLi} className="nav-item">
+              <NavLink to="/external" className="nav-link" onClick={closeSidebar}>YouTube</NavLink>
             </li>
           </ul>
         </div>
