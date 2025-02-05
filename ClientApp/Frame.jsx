@@ -130,7 +130,7 @@ const Frame = ({ children }) => {
 
       <footer className="bg-light text-center text-lg-start" style={{ background: todaysFooterCss, height: '81px', margin: '0' }}>
         <div className="text-center p-3">
-          © 2024 - React Starter Kit. All Rights Reserved.
+          © 2025 - React Starter Kit. All Rights Reserved.
         </div>
       </footer>
       {showLoginModal && <LoginOutForm />}
