@@ -15,8 +15,10 @@ const OtherApplications = () => {
       </p>
       <ul style={{ listStyleImage: 'none', listStyleType: 'disc', paddingLeft: '20px' }}>
         <li>ServerAPI with Angular, React, Vue and Blazor clients</li>
-        <li>WebAPI Data Traffic with NServiceBus</li>
-        <li>Data Traffic with Custom Data Queue</li>
+        <li>Messaging with NServiceBus</li>
+        <li>Messaging with RabbitMQ</li>
+        <li>Messaging with Kafka</li>
+        <li>Messaging with Custom Data Queue</li>
         <li>Add Services to WebAPI</li>
         <li>Hangfire, Postman and Swagger</li>
         <li>Docker, Docker Orchestration and Docker-Compose</li>

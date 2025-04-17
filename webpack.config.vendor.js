@@ -2,7 +2,6 @@ const path = require('path');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { merge } = require('webpack-merge');
-const nodeExternals = require('webpack-node-externals');
 
 module.exports = (env) => {
   const isDevBuild = !(env && env.production);
@@ -69,31 +68,5 @@ module.exports = (env) => {
     ]
   });
 
-  const serverBundleConfig = merge(sharedConfig, {
-    target: 'node',
-    externals: [nodeExternals()],
-    resolve: { mainFields: ['main'] },
-    output: {
-      path: path.join(__dirname, 'ClientApp', 'dist'),
-      libraryTarget: 'commonjs2'
-    },
-    module: {
-      rules: [
-        { test: /\.css$/, use: [MiniCssExtractPlugin.loader, "css-loader"] }
-      ]
-    },
-    entry: { vendor: ['aspnet-prerendering', 'react-dom/server'] },
-    plugins: [
-      new MiniCssExtractPlugin({
-        filename: "[name].css",
-        chunkFilename: "[id].css"
-      }),
-      new webpack.DllPlugin({
-        path: path.join(__dirname, 'ClientApp', 'dist', '[name]-manifest.json'),
-        name: '[name]_[fullhash]'
-      })
-    ]
-  });
-
-  return [clientBundleConfig, serverBundleConfig];
+  return [clientBundleConfig];
 };
